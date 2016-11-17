@@ -31,7 +31,8 @@ if [ ! -d "$DATA_DIR/mysql" ]; then
   mysql_options='--protocol=socket -uroot'
 
   for i in `seq 30 -1 0`; do
-    if mysql $mysql_options -e 'SELECT 1' &> /dev/null; then
+    # if mysql $mysql_options -e 'SELECT 1' &> /dev/null; then
+    if mysql $mysql_options -e 'SELECT 1'; then
       break
     fi
     echo 'MySQL init process in progress...'
