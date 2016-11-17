@@ -6,6 +6,8 @@ for script in /usr/local/bin/*.sh; do
 done
 
 set -o pipefail
+set -o xtrace
+set -o verbose
 
 DATA_DIR="$(mysqld --verbose --help --log-bin-index=`mktemp -u` 2>/dev/null | awk '$1 == "datadir" { print $2; exit }')"
 PID_FILE=/run/mysqld/mysqld.pid
